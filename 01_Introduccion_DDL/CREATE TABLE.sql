@@ -20,6 +20,21 @@ CREATE TABLE IF NOT EXISTS Productos
 	Id INT NOT NULL AUTO_INCREMENT,
     Descripcion VARCHAR (50),
     PRIMARY KEY (Id)
-)
+);
+
+CREATE TABLE IF NOT EXISTS VentasProductos (
+	Id_producto INT NOT NULL,
+    Fecha TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (Id_producto) REFERENCES Productos (Id)
+    -- PRIMARY KEY
+);
+
+CREATE TABLE IF NOT EXISTS 	VentasClientes
+(
+	TipoDocumento CHAR(3) NOT NULL,
+    Documento	  VARCHAR(50) NOT NULL,
+    Fecha		  TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (TipoDocumento,Documento)  REFERENCES Clientes (TipoDocumento,Documento) 
+);
 
 
